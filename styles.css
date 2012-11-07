@@ -1,0 +1,45 @@
+﻿body {
+    background-color: #000;
+    color: #808080;
+    font-size: 16px;
+    font-family: Segoe UI, Verdana;
+}
+
+strong {
+    color: white;
+    font-weight: normal;
+}
+
+a:link {
+    color: #FC0;
+    text-decoration: underline;
+}
+
+.title {
+    color: #FC0;
+    font-size: 25px;
+    text-align: center;
+}
+
+.ip {
+    /*
+    font-weight: bold;
+    border-style: solid;
+    border-width: thin;
+    background-color: #494949;
+    margin: 2px;
+    padding: 4px;
+    */
+    color: white;
+}
+
+#container {
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    width: 950px;
+    height: 600px;
+    margin-top: -230px;
+    margin-left: -448px;
+    overflow: auto;
+}

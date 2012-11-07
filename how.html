@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Naked Domain Redirect</title>
+    <link type="text/css" href="styles.css" rel="Stylesheet">
+</head>
+<body>
+    <div id="container">
+        <div class="title">
+            <h1>How It Works</h1>
+        </div>
+        <div>
+            We created an EC2 machine instance exclusively for this purpose. It's not being used for anything other than naked 
+            domain redirects. It's an EC2 Micro instance, using a fixed elastic IP, based on the Amazon provided <a href="http://kzu.to/Tvifso">AMI with Windows 
+            Server 2008 R2 and IIS</a>, running on the US-West Oregon region, us-west-2a availability zone. SQL Server Express services have been disabled.
+            <p>
+                <a href="http://www.iis.net/downloads/microsoft/url-rewrite">IIS Rewrite Module 2.0</a> was installed and the default web site's whole 
+                <a href="web.config">configuration file</a> is available for inspection. Note how we cleared all registered handlers and left just the rewrite 
+                one, for maximum speed.
+            </p>
+            <strong>Contingency Plans</strong>
+            <p>We have created an AMI and corresponding EC2 instances in the other two availability zones within the region, which are in stand-by.
+                In the event of a failure in the current availability zone, we will just quickly switch the elastic IP to one of those to resume 
+                the service. None of the outages Amazon had has ever spanned multiple availability zones within a region, so service disruption 
+                will be minimal even in the presence of severe failures in Amazon infrastructure.
+            </p>
+            <p>Elastic IPs can't be assigned across regions, however. A full region failure would require a change in your A record that points to it, 
+                to a new elastic IP in a new region. The process of resuming the service in another region is equally fast, save for the DNS update replication.
+            </p>
+            <strong>Monitoring</strong>
+            <p>We use the exact same monitoring tools explained in the <a href="index.html">introduction</a>, with the addition of 
+                an <a href="http://www.ifttt.com">IFTTT</a> recipe that turns the 
+                <a href="http://status.aws.amazon.com/rss/ec2-us-west-2.rss">EC2 availability zone status feed</a> news into emails for us. 
+            </p>
+        </div>
+    </div>
+</body>
+</html>
