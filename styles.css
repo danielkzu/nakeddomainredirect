@@ -10,8 +10,8 @@ strong {
     font-weight: normal;
 }
 
-a:link {
-    color: #FC0;
+a:link, a:visited {
+    color: #808080;
     text-decoration: underline;
 }
 
